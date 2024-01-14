@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aplicatie.RecordsPage"
+             Title="RecordsPage">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <Editor Placeholder="Introdu serviciul dorit (ex:vopsire, manichiura, pedichiura etc.)" Margin="20"
+ Text="{Binding Description}"
+ HeightRequest="50" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Save Record" MaximumWidthRequest="200"
+ Clicked="OnSaveButtonClicked" />
+                <Button Grid.Column="1"
+ Text="Delete Record" MaximumWidthRequest="200"
+ Clicked="OnDeleteButtonClicked"/>
+            </Grid>
+            <Button Text="Specifica serviciul dorit" MaximumWidthRequest="300" Clicked="OnChooseButtonClicked"/>
+            <Grid>
+                <ListView Grid.Row="1" Grid.Column="0" x:Name="listView"
+ Margin="20" IsRefreshing="True" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Description}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Grid.Row="2" Grid.Column="0" Text="Adauga to Appointments"
+MaximumWidthRequest="200"
+ Clicked="OnAddButtonClicked" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
